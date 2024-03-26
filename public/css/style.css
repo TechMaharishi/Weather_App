@@ -1,0 +1,448 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* Remove the default border*/
+/* force styling of type through styling, rather than elements */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+}
+
+/* dark mode user-agent-styles */
+/* improves punctuation in supported browsers */
+html {
+  color-scheme: dark light;
+  hanging-punctuation: first last;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100svh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Improved heading in supported browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* improve readability with max-width on paragraphs and lists */
+/* prevent orphans in supported browsers */
+p,
+li {
+  max-width: var(--p-max-width, 65ch);
+  text-wrap: pretty;
+}
+
+/* Reset CSS for ul and li elements */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* For selected elements, set the cursor to pointer */
+label,
+button,
+select,
+summary,
+[type=radio],
+[type=submit],
+[type=checkbox] {
+    cursor: pointer;
+}
+
+/* Remove default outline from non-keyboard focus */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+      scroll-behavior: auto;
+    }
+  
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+a {
+  text-decoration: none;
+}
+
+/* Custom CSS */
+body{
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+}
+
+.page_container {
+    width: 100%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.card {
+    width: 25rem;
+    height: 31rem;
+    border-radius: 14px;
+    background: #e0e0e0;
+    box-shadow:  19px 19px 38px #9b9b9b,
+             -19px -19px 38px #ffffff;
+  /* position: relative;                   */
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.search input {
+    border-radius: 14px;
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 9px #bababa,
+    inset -5px -5px 9px #ffffff;
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 13rem;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  text-align: center;
+}
+
+.search button {
+    border-radius: 14px;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 9px #bababa,
+             -5px -5px 9px #ffffff;
+    border: none;
+    outline: none;
+    height: 2rem;
+    width: 2rem;    
+}
+
+.search button:hover {
+    background: #ffffff;
+    box-shadow:  inset 5px 5px 9px #bababa,
+             inset -5px -5px 9px #ffffff;
+}
+
+.search button:active {
+    background: #bababa;
+    box-shadow:  inset 5px 5px 9px #ffffff,
+             inset -5px -5px 9px #bababa;
+}
+
+.search button img {
+    width: 1rem;
+    height: 1rem;
+    margin: auto;
+}
+
+.card .weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .weather img {
+    width: 6rem;
+    height: 6rem;
+}
+
+.card .weather h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+}
+
+.card .weather h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.weather_details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;    
+}
+
+
+
+/* loading page */
+.loader_container {
+  
+  background-color: #e0e0e0;
+  position: fixed;
+  inset: 0;
+  z-index:999;
+  display: grid;
+  place-items: center;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+
+.loader_container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader {
+  width: 8rem;
+  height: 8rem;
+  border: .4rem solid black;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  animation: .8s ease infinite alternate spin;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(1turn) scale(1.2);
+  }
+}
+
+.page_container {
+  opacity: 0;
+  transform: translate3d(0, -1rem, 0);
+  transition: opacity .6s ease-in-out, transform .6s ease-in-out;  
+}
+
+.page_container.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  }
+
+/* Heading */
+.heading {
+  width: 24rem;
+  height: 5rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+svg {
+  width: 90%;       /* Set the width of the SVG element */
+  font-weight: 700;   /* Set the font weight for the SVG element */
+}
+
+/* Style for text elements within the SVG */
+svg text {
+  font-size: 3rem;         /* Set the font size for text elements within the SVG */
+  stroke-width: 2;        /* Set the width of the stroke around text elements */
+  letter-spacing: -1px;   /* Adjust the letter spacing for text elements */
+}
+
+/* Additional styling for text elements with the class 'text-body' */
+svg text.text-body {
+  stroke: black;     /* Set the stroke color for text with class 'text-body' */
+  animation: 12s infinite alternate animate-stroke;   /* Apply an animation to text with class 'text-body' */
+}
+
+/* Keyframe animation to create a stroke effect */
+@keyframes animate-stroke {
+  0% {
+      fill: transparent;                     /* Make the text fill transparent at the start of the animation */
+      stroke: black;                      /* Set the stroke color for the text */
+      stroke-width: 3;                       /* Set the width of the stroke */
+      stroke-dashoffset: 25%;                /* Set the initial dash offset for the stroke */
+      stroke-dasharray: 0 32%;               /* Set the initial dash array for the stroke */
+  }
+  50% {
+      fill: transparent;                     /* Make the text fill transparent at the midpoint of the animation */
+      stroke: black;     /* Set the stroke color for the text */
+      stroke-width: 3;                       /* Set the width of the stroke */
+  }
+  80%, 100% {
+      fill: black;        /* Set the text fill color at the end of the animation */
+      stroke: transparent;                   /* Make the stroke transparent at the end of the animation */
+      stroke-width: 0;                       /* Set the width of the stroke to 0 */
+      stroke-dashoffset: -25%;               /* Set the final dash offset for the stroke */
+      stroke-dasharray: 32% 0;               /* Set the final dash array for the stroke */
+  }
+}
+
+/* footer  */
+.footer {
+  text-align: center;
+  margin-block: 2rem;  
+}
+i {
+  font-size: 1.7rem;
+  color: #000000;
+  margin-inline: 0.1rem;
+}
+
+.container_error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    
+}
+
+.error {  
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0.371);
+  text-shadow:  3px 3px 5px #bebebe,
+               -3px -3px 5px #ffffff;  
+}
+
+.container_weather_details {
+  display: block;
+}
+
+
+
+
+
+/* https://api.openweathermap.org/data/2.5/weather?q=Jamshedpur&appid=af0cb5a50f407b476ab109bf32e7afc6 */
+/* https://api.openweathermap.org/data/2.5/weather?q=Jamshedpur&appid=af0cb5a50f407b476ab109bf32e7afc6&units=metric */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media query */
+
+/* Media query for devices below 576px (X-Small) */
+@media (max-width: 36em) {
+  .card {
+    width: auto;
+  }
+
+}
+
+/* Media query for devices between 576px and 768px (Small) */
+@media (min-width: 36em) and (max-width: 48em) {
+  .card {
+    width: auto;
+  }
+
+}
+
+/* Media query for devices between 768px and 992px (Medium) */
+@media (min-width: 48em) and (max-width: 62em) {
+
+}
+
+/* Media query for devices between 992px and 1200px (Large) */
+@media (min-width: 62em) and (max-width: 75em) {
+
+}
+
+/* Media query for devices between 1200px and 1400px (Extra large) */
+@media (min-width: 75em) and (max-width: 87.5em) {
+
+}
+
+/* Media query for devices greater than 1400px (Extra extra large) */
+@media (min-width: 87.5em) {
+
+}
+

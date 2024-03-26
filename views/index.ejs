@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="loader_container">
+        <div class="loader"></div>
+        <p style="color: black; position: absolute;">Loading....</p>
+    </div>
+
+    <div class="page_container">
+        <div class="heading">
+            <svg viewBox="0 0 400 160">
+                <!-- First text element -->
+                <text x="50%" y="50" dy=".32em" text-anchor="middle" class="text-body">
+                    Weather Report
+                </text>
+            </svg>
+        </div>
+
+        <div class="card">
+            <div class="search">
+                <form action="/" method="post">
+                    <input class="serchInput" type="text" name="city" placeholder="Enter City Name" spellcheck="false">
+                    <button type="submit"><img src="images/search.png"></button>
+                </form>
+            </div>
+            <% if (errorMessage) { %>
+                <div class="container_error">
+
+                    <h1 class="error">
+                        <%= errorMessage %>
+                    </h1>
+
+                </div>
+                <% } %>
+                <% if (weatherInfo) { %>
+                    <div class="container_weather_details">
+                        <div class="weather">
+                            
+                                <img src="<%= weatherInfo.iconUrl %>" class="weather_icon">
+                                <h1 class="temp">
+                                    <%= weatherInfo.temperature %>°C
+                                </h1>
+                                <p style="color: rgba(0, 0, 0, 0.502); font-weight: bolder;"class="weather_status">
+                                   ( <%= weatherInfo.description %> )
+                                </p>
+                                <h2 style="color: black;" class="city">
+                                    <%= weatherInfo.cityName %>
+                                </h2>
+                                <h4 style="color: black;" id="date">Loading..</h4>
+                                <p style="color: black;" id="currentTime">00:00</p>                                
+                        </div>
+
+                        <div class="weather_details">
+                            <div class="humidity">
+                                <img src="images/humidity.png" alt="" srcset="">
+                                <h3 style="color: black; font-weight: 600;">Humidity</h3>
+                                <h4 style="color: black; font-weight: 500;" class="humidity_data">
+                                    <%= weatherInfo.humidity %>%
+                                </h4>
+                            </div>
+                            <div class="wind_speed">
+                                <img src="images/wind.png" alt="" srcset="">
+                                <h3 style="color: black; font-weight: 600;">Wind Speed</h3>
+                                <h4 style="color: black; font-weight: 500;" class="wind_speed_data">
+                                    <%= weatherInfo.windSpeed %> km/h
+                                </h4>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h3 style="color: black;">Developed by: Vishal Kumar <a href="https://www.linkedin.com/in/kwd-vishalkumar/"><i
+                    class="ri-linkedin-box-line"></i></a>
+            <a href="mailto:kwd.vishalkumar@gmail.com"><i class="ri-mail-line"></i></a>
+        </h3>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
